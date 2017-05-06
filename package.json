@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Game for the CGA Game Jam",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oliverbenns/cga-jam.git"
@@ -23,5 +20,9 @@
     "babel-preset-stage-2": "^6.24.1",
     "webpack": "^2.5.0",
     "webpack-dev-server": "^2.4.5"
+  },
+  "scripts": {
+    "develop": "webpack-dev-server --hot --inline",
+    "build": "NODE_ENV=production webpack"
   }
 }
