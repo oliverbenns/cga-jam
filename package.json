@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/oliverbenns/cga-jam/issues"
   },
-  "homepage": "https://github.com/oliverbenns/cga-jam#readme"
+  "homepage": "https://github.com/oliverbenns/cga-jam#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
+  }
 }
