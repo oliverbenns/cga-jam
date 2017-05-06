@@ -8,5 +8,5 @@ This being my second game ever built, initial commits will be playing and gettin
 - `npm install`
 
 ## Run
-- Development: `npm run develop`.
+- Development: `npm run develop`, open `http://localhost:8080`.
 - Build: `npm run build`.
