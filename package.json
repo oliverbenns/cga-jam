@@ -1,0 +1,19 @@
+{
+  "name": "cga-jam",
+  "version": "0.0.1",
+  "description": "Game for the CGA Game Jam",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliverbenns/cga-jam.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oliverbenns/cga-jam/issues"
+  },
+  "homepage": "https://github.com/oliverbenns/cga-jam#readme"
+}
