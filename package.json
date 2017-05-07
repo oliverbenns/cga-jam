@@ -25,7 +25,7 @@
   "scripts": {
     "develop": "webpack-dev-server --hot --inline",
     "build": "NODE_ENV=production webpack",
-    "deploy": "NODE_ENV=production webpack && ./deploy.sh"
+    "deploy": "NODE_ENV=production webpack && chmod +x ./deploy.sh && ./deploy.sh"
   },
   "dependencies": {
     "phaser": "^2.6.2"
