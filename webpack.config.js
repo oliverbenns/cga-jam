@@ -3,7 +3,7 @@ const path = require('path');
 
 const APP_DIR = path.resolve(__dirname, 'src');
 const BUILD_DIR = path.resolve(__dirname, 'public');
-const PHASER_DIR = path.join(__dirname, '/node_modules/phaser/');
+const PHASER_DIR = path.join(__dirname, '/node_modules/phaser');
 const NODE_ENV = process.env.NODE_ENV;
 
 
