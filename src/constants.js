@@ -1,9 +1,9 @@
 export const palette = {
   primary: {
+    black: '#000000',
     white: '#ffffff',
     lightCyan: '#55ffff',
     lightMagenta: '#ff55ff',
-    black: '#000000',
   },
   secondary: {
     yellow: '#ffff55',
