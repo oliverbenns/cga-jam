@@ -4,7 +4,8 @@ import 'phaser';
 
 import { palette } from 'constants';
 
-const game = new Phaser.Game(1024, 768, Phaser.AUTO, '', { create });
+// Original CGA used 320 x 200, so aspect ratio is 8:5
+const game = new Phaser.Game(960, 600, Phaser.AUTO, '', { create });
 
 const createPaletteSquares = (palette, y = 0) => {
   const height = game.height * 0.5;
