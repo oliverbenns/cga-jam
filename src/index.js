@@ -28,6 +28,7 @@ function preload() {
 
 let platforms;
 let player;
+let cursors;
 
 function create() {
   const primary = createPaletteSquares(PALETTE.PRIMARY);
@@ -85,10 +86,45 @@ function create() {
   // Our two animations, walking left and right.
   player.animations.add('left', [0, 1], 10, true);
   player.animations.add('right', [2, 1], 10, true);
+
+  // Create cursors
+  cursors = game.input.keyboard.createCursorKeys();
 };
 
 
 function update() {
-  //  Collide the player and the stars with the platforms
-  game.physics.arcade.collide(player, platforms);
+  //
+  // PLAYER MOVEMENT
+  //
+
+  const hitPlatform = game.physics.arcade.collide(player, platforms);
+
+  // Reset the players velocity (movement)
+  player.body.velocity.x = 0;
+  // Centre anchor to allow for flipping
+  player.anchor.setTo(.5,.5);
+
+  if (cursors.left.isDown) {
+    // Move to the left
+    player.body.velocity.x = -150;
+    player.scale.x = -1;
+    player.animations.play('left');
+
+  } else if (cursors.right.isDown) {
+    // Move to the right
+    player.body.velocity.x = 150;
+    player.scale.x = 1;
+
+    player.animations.play('right');
+  } else {
+    // Stand still
+    player.animations.stop();
+
+    player.frame = 4;
+  }
+
+  //  Allow the player to jump if they are touching the ground.
+  if (cursors.up.isDown && player.body.touching.down && hitPlatform) {
+    player.body.velocity.y = -300;
+  }
 }
