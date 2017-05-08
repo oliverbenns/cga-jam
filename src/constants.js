@@ -12,3 +12,10 @@ export const PALETTE = {
     BLACK: '#000000',
   },
 };
+
+export const ASSETS = {
+  BACKGROUND: 'BACKGROUND',
+  PLATFORM: 'PLATFORM',
+  PICKUP: 'PICKUP',
+  PLAYER: 'PLAYER',
+};
