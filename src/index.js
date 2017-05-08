@@ -4,6 +4,10 @@ import 'phaser';
 
 import { ASSETS, PALETTE } from 'constants';
 import fp from 'lodash/fp';
+import Player from 'objects/player';
+import Pickup from 'objects/pickup';
+import Platform from 'objects/platform';
+import Floor from 'objects/floor';
 
 // Original CGA used 320 x 200, so aspect ratio is 8:5
 const game = new Phaser.Game(960, 600, Phaser.AUTO, '', { create, preload, update });
@@ -48,78 +52,58 @@ function create() {
   // A simple background for our game
   game.add.sprite(0, 0, ASSETS.BACKGROUND);
 
-  // The platforms group contains the ground and the 2 ledges we can jump on
+  // Create groups - what are these for?
   platforms = game.add.group();
+  pickups = game.add.group();
 
-  // We will enable physics for any object that is created in this group
-  platforms.enableBody = true;
 
-  // Here we create the ground.
-  const ground = platforms.create(0, game.world.height - 20, ASSETS.PLATFORM);
-
-  // Scale it to fit the width of the game (the original sprite is 400x32 in size)
-  ground.scale.setTo(2, 1);
+  const floor = new Floor(game);
+  platforms.add(floor);
 
   // This stops it from falling away when you jump on it
-  ground.body.immovable = true;
+  // ground.body.immovable = true;
 
-  // Now let's create two ledges
-  const leftPlatform = platforms.create(0, game.world.centerY, ASSETS.PLATFORM);
-  leftPlatform.body.immovable = true;
+  const platformData = [
+    [0, game.world.centerY],
+    [game.world.centerX, game.world.centerY * 1.5]
+  ];
 
-  const rightPlatform = platforms.create(game.world.centerX, game.world.centerY * 1.5, ASSETS.PLATFORM);
-  rightPlatform.body.immovable = true;
+  // No need for .call on constructor with Spread operator.
+  // http://stackoverflow.com/a/32548260
+  platformData
+    .map(positions => new Platform(...[game, ...positions]))
+    .forEach(platform => platforms.add(platform));
 
   //
   // PLAYER
   //
 
-  // The player and its settings
-  player = game.add.sprite(game.world.centerX - 10, game.world.centerY, ASSETS.PLAYER, 1);
+  player = new Player(game);
 
-  // We need to enable physics on the player
-  game.physics.arcade.enable(player);
-
-  // Player physics properties. Give the little guy a slight bounce.
-  player.body.bounce.y = 0.2;
-  player.body.gravity.y = 300;
-  player.body.collideWorldBounds = true;
-
-  // Our two animations, walking left and right.
-  player.animations.add('left', [0, 1], 10, true);
-  player.animations.add('right', [2, 1], 10, true);
+  game.add.existing(player);
 
   // Create cursors
   cursors = game.input.keyboard.createCursorKeys();
-
 
   //
   // PICKUPS
   //
 
-  pickups = game.add.group();
-
-  pickups.enableBody = true;
-
   const pickupCount = 10;
-  const pickupWidth = 24;
 
   const createPickup = index => {
     const column = game.world.width / pickupCount;
-    const x = column * (index + 1) - (column / 2) - (pickupWidth / 2);
+    const pickup = new Pickup(game);
 
-    const pickup = pickups.create(x, game.world.centerY * 0.5, ASSETS.PICKUP);
+    pickup.x = column * (index + 1) - column / 2 - pickup.body.halfWidth;
 
-    //  Let gravity do its thing
-    pickup.body.gravity.y = 300;
-
-    pickup.body.collideWorldBounds = true;
-
-    //  This just gives each pickup a slightly random bounce value
-    pickup.body.bounce.y = 0.2 + Math.random() * 0.15;
+    return pickup;
   };
 
-  fp.times(createPickup)(pickupCount);
+  // @NOTE: This is not using fp.forEach. For some reason
+  // it's not capped https://github.com/lodash/lodash/issues/2316
+  fp.times(createPickup)(pickupCount)
+    .forEach(pickup => pickups.add(pickup));
 };
 
 
