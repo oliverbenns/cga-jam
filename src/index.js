@@ -3,6 +3,7 @@ import 'p2';
 import 'phaser';
 
 import { ASSETS, PALETTE } from 'constants';
+import fp from 'lodash/fp';
 
 // Original CGA used 320 x 200, so aspect ratio is 8:5
 const game = new Phaser.Game(960, 600, Phaser.AUTO, '', { create, preload, update });
@@ -29,6 +30,7 @@ function preload() {
 let platforms;
 let player;
 let cursors;
+let pickups;
 
 function create() {
   const primary = createPaletteSquares(PALETTE.PRIMARY);
@@ -89,6 +91,35 @@ function create() {
 
   // Create cursors
   cursors = game.input.keyboard.createCursorKeys();
+
+
+  //
+  // PICKUPS
+  //
+
+  pickups = game.add.group();
+
+  pickups.enableBody = true;
+
+  const pickupCount = 10;
+  const pickupWidth = 24;
+
+  const createPickup = index => {
+    const column = game.world.width / pickupCount;
+    const x = column * (index + 1) - (column / 2) - (pickupWidth / 2);
+
+    const pickup = pickups.create(x, game.world.centerY * 0.5, ASSETS.PICKUP);
+
+    //  Let gravity do its thing
+    pickup.body.gravity.y = 300;
+
+    pickup.body.collideWorldBounds = true;
+
+    //  This just gives each pickup a slightly random bounce value
+    pickup.body.bounce.y = 0.2 + Math.random() * 0.15;
+  };
+
+  fp.times(createPickup)(pickupCount);
 };
 
 
@@ -98,6 +129,11 @@ function update() {
   //
 
   const hitPlatform = game.physics.arcade.collide(player, platforms);
+  game.physics.arcade.collide(pickups, platforms);
+
+  const collectPickup = (player, star) => star.kill();
+
+  game.physics.arcade.overlap(player, pickups, collectPickup, null, this);
 
   // Reset the players velocity (movement)
   player.body.velocity.x = 0;
@@ -120,7 +156,7 @@ function update() {
     // Stand still
     player.animations.stop();
 
-    player.frame = 4;
+    player.frame = 1;
   }
 
   //  Allow the player to jump if they are touching the ground.
