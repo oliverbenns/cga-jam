@@ -8,6 +8,7 @@ import Player from 'objects/player';
 import Pickup from 'objects/pickup';
 import Platform from 'objects/platform';
 import Floor from 'objects/floor';
+import Background from 'objects/background';
 
 // Original CGA used 320 x 200, so aspect ratio is 8:5
 const game = new Phaser.Game(960, 600, Phaser.AUTO, '', { create, preload, update });
@@ -49,8 +50,8 @@ function create() {
   // We're going to be using physics, so enable the Arcade Physics system
   game.physics.startSystem(Phaser.Physics.ARCADE);
 
-  // A simple background for our game
-  game.add.sprite(0, 0, ASSETS.BACKGROUND);
+  const background = new Background(game);
+  game.add.existing(background)
 
   // Create groups - what are these for?
   platforms = game.add.group();
