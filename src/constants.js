@@ -19,3 +19,10 @@ export const ASSETS = {
   PICKUP: 'PICKUP',
   PLAYER: 'PLAYER',
 };
+
+export const STATES = {
+  BOOT: 'BOOT',
+  TITLE: 'TITLE',
+  PLAY: 'PLAY',
+  END: 'END',
+};

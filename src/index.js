@@ -2,116 +2,30 @@ import 'pixi';
 import 'p2';
 import 'phaser';
 
-import { ASSETS, PALETTE } from 'constants';
-import fp from 'lodash/fp';
-import Player from 'objects/player';
-import Pickup from 'objects/pickup';
-import Platform from 'objects/platform';
-import Floor from 'objects/floor';
-import Background from 'objects/background';
+import { STATES } from 'constants';
 
-// Original CGA used 320 x 200, so aspect ratio is 8:5
-const game = new Phaser.Game(960, 600, Phaser.AUTO, '', { create, preload, update });
+import Boot from 'states/boot';
+import Play from 'states/play';
+import End from 'states/end';
+import Title from 'states/title';
 
-const createPaletteSquares = (palette, y = 0) => {
-  const height = game.height * 0.5;
-  const width = game.width * 0.25;
-
-  return Object
-    .values(palette)
-    .map((hex, index) => ({
-      hex,
-      rect: new Phaser.Rectangle(index * width, y, width, height),
-    }))
+const settings = {
+  width: 960,
+  height: 960 / 8 * 5, // Original CGA used 320 x 200, so aspect ratio is 8:5
+  renderer: Phaser.AUTO,
+  parent: '',
+  state: null,
+  transparent: false,
+  antialias: false,
+  physicsConfig: { arcade: true },
 };
 
-function preload() {
-  game.load.image(ASSETS.BACKGROUND, 'assets/img/background.png');
-  game.load.image(ASSETS.PLATFORM, 'assets/img/platform.png');
-  game.load.image(ASSETS.PICKUP, 'assets/img/pickup.png');
-  game.load.spritesheet(ASSETS.PLAYER, 'assets/img/player.png', 20, 32);
-}
+const args = Object.values(settings);
+const game = new Phaser.Game(...args);
 
-let platforms;
-let player;
-let cursors;
-let pickups;
+game.state.add(STATES.BOOT, Boot);
+game.state.add(STATES.TITLE, Title);
+game.state.add(STATES.PLAY, Play);
+game.state.add(STATES.END, End);
 
-function create() {
-  const primary = createPaletteSquares(PALETTE.PRIMARY);
-  const secondary = createPaletteSquares(PALETTE.SECONDARY, game.world.centerY);
-
-  // primary.concat(secondary).forEach(square => game.debug.geom(square.rect, square.hex));
-
-  //
-  // GAME WORLD
-  //
-
-  // We're going to be using physics, so enable the Arcade Physics system
-  game.physics.startSystem(Phaser.Physics.ARCADE);
-
-  const background = new Background(game);
-  game.add.existing(background)
-
-  // Create groups - what are these for?
-  platforms = game.add.group();
-  pickups = game.add.group();
-
-
-  const floor = new Floor(game);
-  platforms.add(floor);
-
-  // This stops it from falling away when you jump on it
-  // ground.body.immovable = true;
-
-  const platformData = [
-    [0, game.world.centerY],
-    [game.world.centerX, game.world.centerY * 1.5]
-  ];
-
-  // No need for .call on constructor with Spread operator.
-  // http://stackoverflow.com/a/32548260
-  platformData
-    .map(positions => new Platform(...[game, ...positions]))
-    .forEach(platform => platforms.add(platform));
-
-  //
-  // PLAYER
-  //
-
-  player = new Player(game);
-
-  game.add.existing(player);
-
-  // Create cursors
-  cursors = game.input.keyboard.createCursorKeys();
-
-  //
-  // PICKUPS
-  //
-
-  const pickupCount = 10;
-
-  const createPickup = index => {
-    const column = game.world.width / pickupCount;
-    const pickup = new Pickup(game);
-
-    pickup.x = column * (index + 1) - column / 2 - pickup.body.halfWidth;
-
-    return pickup;
-  };
-
-  // @NOTE: This is not using fp.forEach. For some reason
-  // it's not capped https://github.com/lodash/lodash/issues/2316
-  fp.times(createPickup)(pickupCount)
-    .forEach(pickup => pickups.add(pickup));
-};
-
-
-function update() {
-  game.physics.arcade.collide(pickups, platforms);
-
-  const collectPickup = (player, star) => star.kill();
-
-  game.physics.arcade.overlap(player, pickups, collectPickup, null, this);
-}
+game.state.start(STATES.BOOT);
