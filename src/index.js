@@ -9,7 +9,7 @@ import Play from 'states/play';
 import End from 'states/end';
 import Title from 'states/title';
 
-const settings = {
+const config = {
   width: 960,
   height: 960 / 8 * 5, // Original CGA used 320 x 200, so aspect ratio is 8:5
   renderer: Phaser.AUTO,
@@ -20,8 +20,7 @@ const settings = {
   physicsConfig: { arcade: true },
 };
 
-const args = Object.values(settings);
-const game = new Phaser.Game(...args);
+const game = new Phaser.Game(config);
 
 game.state.add(STATES.BOOT, Boot);
 game.state.add(STATES.TITLE, Title);
