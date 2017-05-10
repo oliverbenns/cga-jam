@@ -5,7 +5,7 @@ export default class Pickup extends Phaser.Sprite {
     const { world } = game;
     const size = 24;
 
-    super(game, world.centerX - size / 2, world.centerY - size / 2, ASSETS.PICKUP);
+    super(game, world.centerX - size / 2, world.top, ASSETS.PICKUP);
 
     game.physics.arcade.enable(this);
 

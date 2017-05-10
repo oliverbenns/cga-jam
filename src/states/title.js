@@ -15,6 +15,6 @@ export default class Title extends Phaser.State {
   }
 
   handleClick() {
-    this.game.state.start(STATES.PLAY);
+    this.game.state.start('LEVEL_01');
   }
 }

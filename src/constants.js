@@ -24,6 +24,5 @@ export const ASSETS = {
 export const STATES = {
   BOOT: 'BOOT',
   TITLE: 'TITLE',
-  PLAY: 'PLAY',
   END: 'END',
 };
