@@ -18,6 +18,7 @@ export const ASSETS = {
   PLATFORM: 'PLATFORM',
   PICKUP: 'PICKUP',
   PLAYER: 'PLAYER',
+  BUTTON: 'BUTTON',
 };
 
 export const STATES = {

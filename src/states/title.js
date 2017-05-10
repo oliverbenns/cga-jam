@@ -1,8 +1,14 @@
-import { STATES } from 'constants';
+import { ASSETS, STATES } from 'constants';
+
+import Button from 'objects/button';
 
 export default class Title extends Phaser.State {
-  init() {
-    console.log('No title screen right now. So starting game...')
+  create() {
+    const button = new Button(this.game, this.handleClick, 'Start Game');
+    this.game.add.existing(button);
+  }
+
+  handleClick() {
     this.game.state.start(STATES.PLAY);
   }
 }
