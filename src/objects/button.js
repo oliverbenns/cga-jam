@@ -5,7 +5,7 @@ export default class Button extends Phaser.Button {
     const { world } = game;
 
     // Anchor is always centre so don't need to calculate half width/height.
-    super(game, world.centerX, world.centerY, ASSETS.BUTTON, onClick, null, 1, 1, 0);
+    super(game, world.centerX, world.centerY * 1.25, ASSETS.BUTTON, onClick, null, 1, 1, 0);
     this.anchor.setTo(0.5, 0.5);
 
     if (label) {
