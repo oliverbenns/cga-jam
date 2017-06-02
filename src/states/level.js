@@ -5,6 +5,7 @@ import Background from 'objects/background';
 import Border from 'objects/border';
 import Player from 'objects/player';
 import Target from 'objects/target';
+import { cell } from 'grid';
 
 export default class Level extends Phaser.State {
   constructor(number, data) {
@@ -28,7 +29,10 @@ export default class Level extends Phaser.State {
     this.pickups = game.add.group();
 
     data.targets
-      .map(positions => new Target(game, ...positions))
+      .map(positions => {
+        const cellPositions = positions.map(cell);
+        return new Target(game, ...cellPositions)
+      })
       .forEach(target => this.targets.add(target));
 
     const border = new Border(game);
