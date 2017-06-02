@@ -15,6 +15,7 @@ export const PALETTE = {
 
 export const ASSETS = {
   BACKGROUND: 'BACKGROUND',
+  BULLET: 'BULLET',
   PLAYER: 'PLAYER',
   TARGET: 'TARGET',
   BUTTON: 'BUTTON',

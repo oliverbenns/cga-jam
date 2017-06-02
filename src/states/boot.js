@@ -5,6 +5,7 @@ export default class Boot extends Phaser.State {
     const { load } = this.game;
 
     load.image(ASSETS.BACKGROUND, 'assets/img/background.png');
+    load.spritesheet(ASSETS.BULLET, 'assets/img/bullet.png', 4, 4);
     load.spritesheet(ASSETS.BLOCK, 'assets/img/block.png', 40, 40);
     load.spritesheet(ASSETS.BUTTON, 'assets/img/button.png', 190, 49);
     load.spritesheet(ASSETS.PLAYER, 'assets/img/player.png', 20, 32);

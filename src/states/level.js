@@ -7,6 +7,7 @@ import Player from 'objects/player';
 import Target from 'objects/target';
 import { cell } from 'grid';
 
+import Bullet from 'objects/bullet';
 export default class Level extends Phaser.State {
   constructor(number, data) {
     super();
@@ -24,9 +25,9 @@ export default class Level extends Phaser.State {
     };
 
     const background = new Background(game);
-    this.player = new Player(game, cell(playerPosition.x), cell(playerPosition.y));
-
     game.add.existing(background);
+
+    this.player = new Player(game, cell(playerPosition.x), cell(playerPosition.y));
     game.add.existing(this.player);
 
     // Create groups - what are these for?
@@ -52,6 +53,7 @@ export default class Level extends Phaser.State {
   }
 
   update() {
+    this.game.physics.arcade.collide(this.player.bullet, this.targets);
     // const collectPickup = (player, pickup) => {
     //   pickup.kill()
     //   this.endGame();
