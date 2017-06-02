@@ -18,8 +18,13 @@ export default class Level extends Phaser.State {
   create() {
     const { data, game } = this;
 
+    const playerPosition = {
+      x: 0,
+      y: 1,
+    };
+
     const background = new Background(game);
-    this.player = new Player(game);
+    this.player = new Player(game, cell(playerPosition.x), cell(playerPosition.y));
 
     game.add.existing(background);
     game.add.existing(this.player);
@@ -35,7 +40,7 @@ export default class Level extends Phaser.State {
       })
       .forEach(target => this.targets.add(target));
 
-    const border = new Border(game);
+    const border = new Border(game, [playerPosition]);
     game.add.existing(border);
   };
 
