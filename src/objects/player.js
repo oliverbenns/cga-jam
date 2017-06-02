@@ -1,4 +1,4 @@
-import Platform from 'objects/platform';
+// import Platform from 'objects/platform';
 import { ASSETS } from 'constants';
 
 export default class Player extends Phaser.Sprite {
@@ -48,9 +48,9 @@ export default class Player extends Phaser.Sprite {
   update() {
     // @TODO: this is bad. How about a recursive getAllByInstance on the game obj?
     // Does this also need to be called on every update? Is this expensive?
-    const platforms = this.game.world.children.find(child => child instanceof Phaser.Group && child.children[0] instanceof Platform);
+    // const platforms = this.game.world.children.find(child => child instanceof Phaser.Group && child.children[0] instanceof Platform);
 
-    this.hitPlatform = this.game.physics.arcade.collide(this, platforms);
+    // this.hitPlatform = this.game.physics.arcade.collide(this, platforms);
 
     this.updateMovement();
   }
