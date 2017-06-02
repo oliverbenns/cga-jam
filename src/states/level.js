@@ -2,6 +2,7 @@ import { STATES } from 'constants';
 import fp from 'lodash/fp';
 
 import Background from 'objects/background';
+import Border from 'objects/border';
 import Player from 'objects/player';
 import Target from 'objects/target';
 
@@ -29,6 +30,9 @@ export default class Level extends Phaser.State {
     data.targets
       .map(positions => new Target(game, ...positions))
       .forEach(target => this.targets.add(target));
+
+    const border = new Border(game);
+    game.add.existing(border);
   };
 
   endGame() {
