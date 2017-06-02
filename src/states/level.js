@@ -1,17 +1,15 @@
 import { STATES } from 'constants';
 import fp from 'lodash/fp';
-import Player from 'objects/player';
-import Pickup from 'objects/pickup';
-import Platform from 'objects/platform';
-import Floor from 'objects/floor';
+
 import Background from 'objects/background';
+import Player from 'objects/player';
+import Target from 'objects/target';
 
 export default class Level extends Phaser.State {
   constructor(number, data) {
     super();
     this.data = data;
 
-    this.createPickup = this.createPickup.bind(this);
     this.number = number;
   }
 
@@ -19,37 +17,19 @@ export default class Level extends Phaser.State {
     const { data, game } = this;
 
     const background = new Background(game);
-    const floor = new Floor(game);
     this.player = new Player(game);
 
     game.add.existing(background);
     game.add.existing(this.player);
 
     // Create groups - what are these for?
-    this.platforms = game.add.group();
+    this.targets = game.add.group();
     this.pickups = game.add.group();
 
-    this.platforms.add(floor);
-
-    // No need for .call on constructor with Spread operator.
-    // http://stackoverflow.com/a/32548260
-    data.platforms
-      .map(positions => new Platform(...[game, ...positions]))
-      .forEach(platform => this.platforms.add(platform));
-
-    // @NOTE: This is not using fp.forEach. For some reason
-    // it's not capped https://github.com/lodash/lodash/issues/2316
-    fp.times(this.createPickup)(data.pickupCount)
-      .forEach(pickup => this.pickups.add(pickup));
+    data.targets
+      .map(positions => new Target(game, ...positions))
+      .forEach(target => this.targets.add(target));
   };
-
-   createPickup(index) {
-    const column = this.game.world.width / this.data.pickupCount;
-    const pickup = new Pickup(this.game);
-    pickup.x = column * (index + 1) - column / 2 - pickup.body.halfWidth;
-
-    return pickup;
-  }
 
   endGame() {
     const { state } = this.game;
@@ -59,13 +39,11 @@ export default class Level extends Phaser.State {
   }
 
   update() {
-    this.game.physics.arcade.collide(this.pickups, this.platforms);
+    // const collectPickup = (player, pickup) => {
+    //   pickup.kill()
+    //   this.endGame();
+    // };
 
-    const collectPickup = (player, pickup) => {
-      pickup.kill()
-      this.endGame();
-    };
-
-    this.game.physics.arcade.overlap(this.player, this.pickups, collectPickup, null, this);
+    // this.game.physics.arcade.overlap(this.player, this.pickups, collectPickup, null, this);
   }
 }

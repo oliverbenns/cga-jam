@@ -15,9 +15,8 @@ export const PALETTE = {
 
 export const ASSETS = {
   BACKGROUND: 'BACKGROUND',
-  PLATFORM: 'PLATFORM',
-  PICKUP: 'PICKUP',
   PLAYER: 'PLAYER',
+  TARGET: 'TARGET',
   BUTTON: 'BUTTON',
 };
 

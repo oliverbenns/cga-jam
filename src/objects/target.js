@@ -1,10 +1,10 @@
 import { ASSETS } from 'constants';
 
-export default class Platform extends Phaser.Sprite {
+export default class Target extends Phaser.Sprite {
   constructor(game, x, y) {
     const { world } = game;
 
-    super(game, x, y, ASSETS.PLATFORM);
+    super(game, x, y, ASSETS.TARGET);
 
     game.physics.arcade.enable(this);
 
