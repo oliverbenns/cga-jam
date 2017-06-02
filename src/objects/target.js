@@ -9,5 +9,19 @@ export default class Target extends Phaser.Sprite {
     game.physics.arcade.enable(this);
 
     this.body.immovable = true;
+    this.anchor.setTo(0.5);
+
+    this.inputEnabled = true;
+    this.events.onInputDown.add(this.listener, this);
+  }
+
+  listener (sprite, pointer) {
+    if (pointer.button === Phaser.Mouse.RIGHT_BUTTON) {
+      this.angle -= 45;
+      return;
+    }
+
+    this.angle += 45;
   }
 }
+
