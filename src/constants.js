@@ -26,3 +26,11 @@ export const STATES = {
   TITLE: 'TITLE',
   END: 'END',
 };
+
+export const CANVAS = {
+  WIDTH: 960,
+  HEIGHT: 960 / 8 * 5, // Original CGA used 320 x 200, so aspect ratio is 8:5
+  CELL_SIZE: 40, // 960 & 600 is divisible by this.
+  CELL_COUNT_X: 24,
+  CELL_COUNT_Y: 15,
+};

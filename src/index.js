@@ -2,7 +2,7 @@ import 'pixi';
 import 'p2';
 import 'phaser';
 
-import { STATES } from 'constants';
+import { CANVAS, STATES } from 'constants';
 import levelData from 'levels';
 
 import Boot from 'states/boot';
@@ -11,8 +11,8 @@ import End from 'states/end';
 import Title from 'states/title';
 
 const config = {
-  width: 960,
-  height: 960 / 8 * 5, // Original CGA used 320 x 200, so aspect ratio is 8:5
+  width: CANVAS.WIDTH,
+  height: CANVAS.HEIGHT,
   renderer: Phaser.AUTO,
   parent: '',
   state: null,
