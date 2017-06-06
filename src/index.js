@@ -18,7 +18,7 @@ const config = {
   state: null,
   transparent: false,
   antialias: false,
-  physicsConfig: { arcade: true },
+  physicsConfig: { p2: true },
 };
 
 const game = new Phaser.Game(config);

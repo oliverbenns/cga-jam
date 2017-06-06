@@ -53,7 +53,7 @@ export default class Level extends Phaser.State {
   }
 
   update() {
-    this.game.physics.arcade.collide(this.player.bullet, this.targets);
+    // this.game.physics.arcade.collide(this.player.bullet, this.targets);
     // const collectPickup = (player, pickup) => {
     //   pickup.kill()
     //   this.endGame();

@@ -6,10 +6,11 @@ export default class Target extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.TARGET);
 
-    game.physics.arcade.enable(this);
+    game.physics.p2.enable(this, true)
 
-    this.body.immovable = true;
-    this.anchor.setTo(0.5);
+    this.body.setCircle(45);
+    game.debug.body(this);
+
 
     this.inputEnabled = true;
     this.events.onInputDown.add(this.listener, this);
