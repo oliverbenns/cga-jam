@@ -18,11 +18,11 @@ export default class Target extends Phaser.Sprite {
 
   listener (sprite, pointer) {
     if (pointer.button === Phaser.Mouse.RIGHT_BUTTON) {
-      this.angle -= 45;
+      this.body.angle -= 45;
       return;
     }
 
-    this.angle += 45;
+    this.body.angle += 45;
   }
 }
 
