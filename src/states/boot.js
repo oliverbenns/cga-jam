@@ -1,4 +1,4 @@
-import { ASSETS, STATES } from 'constants';
+import { ASSETS, PHYSICS, STATES } from 'constants';
 
 export default class Boot extends Phaser.State {
   preload() {
@@ -10,6 +10,8 @@ export default class Boot extends Phaser.State {
     load.spritesheet(ASSETS.BUTTON, 'assets/img/button.png', 190, 49);
     load.spritesheet(ASSETS.PLAYER, 'assets/img/player.png', 20, 32);
     load.spritesheet(ASSETS.TARGET, 'assets/img/target.png', 80, 80);
+
+    this.game.load.physics(PHYSICS, 'assets/physics.json');
   }
 
   create() {

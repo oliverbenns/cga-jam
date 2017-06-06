@@ -1,4 +1,4 @@
-import { ASSETS } from 'constants';
+import { ASSETS, PHYSICS } from 'constants';
 
 export default class Target extends Phaser.Sprite {
   constructor(game, x, y) {
@@ -6,11 +6,13 @@ export default class Target extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.TARGET);
 
-    game.physics.p2.enable(this, true)
+    game.physics.p2.enable(this, true);
 
-    this.body.setCircle(45);
+    this.body.clearShapes();
+    this.body.loadPolygon(PHYSICS, 'target');
+
+    this.body.static = true;
     game.debug.body(this);
-
 
     this.inputEnabled = true;
     this.events.onInputDown.add(this.listener, this);

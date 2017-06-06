@@ -35,3 +35,5 @@ export const CANVAS = {
   CELL_COUNT_X: 24,
   CELL_COUNT_Y: 15,
 };
+
+export const PHYSICS = 'PHYSICS';

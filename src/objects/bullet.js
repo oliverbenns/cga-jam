@@ -1,4 +1,4 @@
-import { ASSETS } from 'constants';
+import { ASSETS, PHYSICS } from 'constants';
 
 export default class Bullet extends Phaser.Sprite {
   constructor(game, x, y) {
@@ -6,14 +6,20 @@ export default class Bullet extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.BULLET);
 
-    game.physics.arcade.enable(this);
+    game.physics.p2.enable(this, true);
 
-    this.body.bounce.x = 1;
-    this.body.bounce.y = 1;
+    this.body.setRectangleFromSprite(this);
+
+    this.body.fixedRotation = true;
+    game.debug.body(this);
+
+
+    // this.body.bounce.x = 1;
+    // this.body.bounce.y = 1;
 
     // this.anchor.setTo(0.5);
-    console.log('this.position.x', this.position.x);
-    console.log('this.position.y', this.position.y);
+    // console.log('this.position.x', this.position.x);
+    // console.log('this.position.y', this.position.y);
   }
 }
 

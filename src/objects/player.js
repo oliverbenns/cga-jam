@@ -8,7 +8,11 @@ export default class Player extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.PLAYER, 1);
 
-    game.physics.arcade.enable(this);
+    game.physics.p2.enable(this, true);
+
+    this.body.setRectangle(20);
+    this.body.static = true;
+    game.debug.body(this);
 
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
