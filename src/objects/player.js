@@ -28,7 +28,8 @@ export default class Player extends Phaser.Sprite {
   }
 
   fireBullet() {
-    this.bullet.body.velocity.x = 200;
+    this.bullet.body.velocity.x = 500;
+    // this.bullet.body.velocity.y = 200;
   }
 }
 
