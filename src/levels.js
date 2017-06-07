@@ -13,4 +13,14 @@ const levels = [
   },
 ];
 
-export default levels;
+export default levels.map(level => ({
+  ...level,
+  player: level.player || {
+    x: 0,
+    y: 3
+  },
+  enemy: level.enemy || {
+    x: 23,
+    y: 11
+  },
+}));

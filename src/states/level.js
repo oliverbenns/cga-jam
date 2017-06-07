@@ -38,16 +38,13 @@ export default class Level extends Phaser.State {
   create() {
     const { data, game } = this;
 
-    const playerPosition = { x: 0, y: 3 };
-    const enemyPosition = { x: 23, y: 11 };
-
     const background = new Background(game);
     game.add.existing(background);
 
-    this.player = new Player(game, cell(playerPosition.x), cell(playerPosition.y));
+    this.player = new Player(game, cell(data.player.x), cell(data.player.y));
     game.add.existing(this.player);
 
-    this.enemy = new Enemy(game, cell(enemyPosition.x), cell(enemyPosition.y));
+    this.enemy = new Enemy(game, cell(data.enemy.x), cell(data.enemy.y));
     game.add.existing(this.enemy);
 
     // Create groups - what are these for?
@@ -61,7 +58,7 @@ export default class Level extends Phaser.State {
       })
       .forEach(target => this.targets.add(target));
 
-    const border = new Border(game, [playerPosition, enemyPosition]);
+    const border = new Border(game, [data.player, data.enemy]);
     game.add.existing(border);
   };
 
