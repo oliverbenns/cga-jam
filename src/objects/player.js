@@ -1,4 +1,3 @@
-// import Platform from 'objects/platform';
 import { ASSETS } from 'constants';
 import Bullet from 'objects/bullet';
 
@@ -14,6 +13,8 @@ export default class Player extends Phaser.Sprite {
     this.body.static = true;
     game.debug.body(this);
 
+    this.fired = false;
+
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
     this.bullet = new Bullet(game, x, y + 20);
@@ -21,8 +22,8 @@ export default class Player extends Phaser.Sprite {
   }
 
   update() {
-    if (this.spaceKey.isDown) {
-      console.log('fire!')
+    if (this.spaceKey.isDown && !this.fired) {
+      this.fired = true;
       this.fireBullet();
     }
   }
