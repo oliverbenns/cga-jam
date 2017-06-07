@@ -4,11 +4,13 @@ import fp from 'lodash/fp';
 import Background from 'objects/background';
 import Border from 'objects/border';
 import Player from 'objects/player';
+import Enemy from 'objects/enemy';
 import Target from 'objects/target';
 import { cell } from 'grid';
 import { getMaterial } from 'utils';
 
 import Bullet from 'objects/bullet';
+
 export default class Level extends Phaser.State {
   constructor(number, data) {
     super();
@@ -36,16 +38,17 @@ export default class Level extends Phaser.State {
   create() {
     const { data, game } = this;
 
-    const playerPosition = {
-      x: 0,
-      y: 1,
-    };
+    const playerPosition = { x: 0, y: 3 };
+    const enemyPosition = { x: 23, y: 11 };
 
     const background = new Background(game);
     game.add.existing(background);
 
     this.player = new Player(game, cell(playerPosition.x), cell(playerPosition.y));
     game.add.existing(this.player);
+
+    this.enemy = new Enemy(game, cell(enemyPosition.x), cell(enemyPosition.y));
+    game.add.existing(this.enemy);
 
     // Create groups - what are these for?
     this.targets = game.add.group();
@@ -58,7 +61,7 @@ export default class Level extends Phaser.State {
       })
       .forEach(target => this.targets.add(target));
 
-    const border = new Border(game, [playerPosition]);
+    const border = new Border(game, [playerPosition, enemyPosition]);
     game.add.existing(border);
   };
 
