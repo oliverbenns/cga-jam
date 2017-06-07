@@ -1,4 +1,4 @@
-import { ASSETS, PHYSICS, STATES } from 'constants';
+import { ASSETS, PHYSICS, MATERIALS, STATES } from 'constants';
 
 export default class Boot extends Phaser.State {
   preload() {
@@ -12,6 +12,9 @@ export default class Boot extends Phaser.State {
     load.spritesheet(ASSETS.TARGET, 'assets/img/target.png', 80, 80);
 
     this.game.load.physics(PHYSICS, 'assets/physics.json');
+
+    const bulletMaterial = this.game.physics.p2.createMaterial(MATERIALS.BULLET);
+    const targetMaterial = this.game.physics.p2.createMaterial(MATERIALS.TARGET);
   }
 
   create() {

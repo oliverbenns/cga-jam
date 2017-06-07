@@ -1,4 +1,5 @@
-import { ASSETS, PHYSICS } from 'constants';
+import { ASSETS, MATERIALS, PHYSICS } from 'constants';
+import { getMaterial } from 'utils';
 
 export default class Target extends Phaser.Sprite {
   constructor(game, x, y) {
@@ -16,6 +17,9 @@ export default class Target extends Phaser.Sprite {
 
     this.inputEnabled = true;
     this.events.onInputDown.add(this.listener, this);
+
+    const targetMaterial = getMaterial(game, MATERIALS.TARGET);
+    this.body.setMaterial(targetMaterial);
   }
 
   listener (sprite, pointer) {

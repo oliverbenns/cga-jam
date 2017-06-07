@@ -37,3 +37,8 @@ export const CANVAS = {
 };
 
 export const PHYSICS = 'PHYSICS';
+
+export const MATERIALS = {
+  BULLET: 'BULLET',
+  TARGET: 'TARGET',
+}
