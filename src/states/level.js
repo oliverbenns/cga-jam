@@ -25,7 +25,7 @@ export default class Level extends Phaser.State {
 
     // @TODO: Why can't I add this to states/boot preload?
     this.game.physics.p2.createContactMaterial(bulletMaterial, targetMaterial, {
-      friction: 1,     // Friction to use in the contact of these two materials.
+      friction: 0.3,     // Friction to use in the contact of these two materials.
       restitution: 1,  // Restitution (i.e. how bouncy it is!) to use in the contact of these two materials.
       stiffness: 1e7,    // Stiffness of the resulting ContactEquation that this ContactMaterial generate.
       relaxation: 3,     // Relaxation of the resulting ContactEquation that this ContactMaterial generate.
