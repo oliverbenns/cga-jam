@@ -13,8 +13,8 @@ export default class Boot extends Phaser.State {
 
     this.game.load.physics(PHYSICS, 'assets/physics.json');
 
-    const bulletMaterial = this.game.physics.p2.createMaterial(MATERIALS.BULLET);
-    const targetMaterial = this.game.physics.p2.createMaterial(MATERIALS.TARGET);
+    this.game.physics.p2.createMaterial(MATERIALS.BULLET);
+    this.game.physics.p2.createMaterial(MATERIALS.TARGET);
   }
 
   create() {
