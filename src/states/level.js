@@ -49,7 +49,6 @@ export default class Level extends Phaser.State {
 
     // Create groups - what are these for?
     this.targets = game.add.group();
-    this.pickups = game.add.group();
 
     data.targets
       .map(positions => {
