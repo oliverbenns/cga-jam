@@ -13,6 +13,7 @@ export default class Boot extends Phaser.State {
     load.spritesheet(ASSETS.TARGET, 'assets/img/target.png', 80, 80);
 
     this.game.load.physics(PHYSICS, 'assets/physics.json');
+    this.game.physics.p2.setImpactEvents(true);
 
     this.game.physics.p2.createMaterial(MATERIALS.BULLET);
     this.game.physics.p2.createMaterial(MATERIALS.TARGET);
