@@ -17,7 +17,7 @@ export default class Player extends Phaser.Sprite {
 
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    this.bullet = new Bullet(game, x, y + 20);
+    this.bullet = new Bullet(game, x + 20 , y);
     game.add.existing(this.bullet);
   }
 
