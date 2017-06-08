@@ -1,4 +1,4 @@
-import { MATERIALS, STATES } from 'constants';
+import { COLLISION_GROUPS, MATERIALS, STATES } from 'constants';
 import fp from 'lodash/fp';
 
 import Background from 'objects/background';
@@ -7,7 +7,7 @@ import Player from 'objects/player';
 import Enemy from 'objects/enemy';
 import Target from 'objects/target';
 import { cell } from 'grid';
-import { getMaterial } from 'utils';
+import { createCollisionGroup, getMaterial } from 'utils';
 
 import Bullet from 'objects/bullet';
 
@@ -33,6 +33,9 @@ export default class Level extends Phaser.State {
       frictionRelaxation: 3,     // Relaxation of the resulting FrictionEquation that this ContactMaterial generate.
       surfaceVelocity: 0,        // Will add surface velocity to this material. If bodyA rests on top if bodyB, and the surface velocity is positive, bodyA will slide to the right.
     });
+
+    createCollisionGroup(this.game, COLLISION_GROUPS.BULLET);
+    createCollisionGroup(this.game, COLLISION_GROUPS.TARGET);
   }
 
   create() {

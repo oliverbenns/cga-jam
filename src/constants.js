@@ -42,4 +42,9 @@ export const PHYSICS = 'PHYSICS';
 export const MATERIALS = {
   BULLET: 'BULLET',
   TARGET: 'TARGET',
-}
+};
+
+export const COLLISION_GROUPS = {
+  BULLET: 'BULLET',
+  TARGET: 'TARGET',
+};

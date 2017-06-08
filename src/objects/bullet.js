@@ -1,5 +1,5 @@
-import { ASSETS, MATERIALS, PHYSICS } from 'constants';
-import { getMaterial } from 'utils';
+import { ASSETS, COLLISION_GROUPS, MATERIALS, PHYSICS } from 'constants';
+import { getCollisionGroup, getMaterial } from 'utils';
 
 export default class Bullet extends Phaser.Sprite {
   constructor(game, x, y) {
@@ -14,8 +14,18 @@ export default class Bullet extends Phaser.Sprite {
     this.body.fixedRotation = true;
     game.debug.body(this);
 
+    // Material
     const material = getMaterial(game, MATERIALS.BULLET);
     this.body.setMaterial(material);
+
+    // Collision group
+    const bulletGroup = getCollisionGroup(game, COLLISION_GROUPS.BULLET);
+    const targetGroup = getCollisionGroup(game, COLLISION_GROUPS.TARGET);
+
+    this.body.setCollisionGroup(bulletGroup);
+    this.body.collides(targetGroup, () => {
+      console.log('Collided with a target woop woop')
+    });
   }
 }
 
