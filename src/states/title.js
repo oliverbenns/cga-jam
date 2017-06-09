@@ -7,7 +7,7 @@ export default class Title extends Phaser.State {
   create() {
     const { game } = this;
     const objects = [
-      new Heading(game, 'CGA Jam'),
+      new Heading(game, 'CGA RICHOCHET'),
       new Button(game, this.handleClick, 'Start game'),
     ];
 

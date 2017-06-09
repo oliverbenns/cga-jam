@@ -9,7 +9,7 @@ export default class Button extends Phaser.Button {
     this.anchor.setTo(0.5, 0.5);
 
     if (label) {
-      this.label = new Phaser.Text(game, 0, 0, label, { font: '24px Arial', fill: PALETTE.PRIMARY.BLACK });
+      this.label = new Phaser.Text(game, 0, 0, label, { font: '16px Pixeled', fill: PALETTE.PRIMARY.BLACK });
       this.label.anchor.setTo(0.5, 0.5);
       this.addChild(this.label);
     }
