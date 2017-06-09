@@ -4,9 +4,23 @@
     <title>CGA JAM</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>body { margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh }</style>
+    <style>
+      body { margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh }
+      @font-face {
+        font-family: 'Pixeled';
+        src: url('assets/font/pixeled.woff');
+      }
+      /* This forces the font to preload before canvas is drawn. */
+      .fontLoader {
+         position: absolute;
+         left: -100%;
+         visibility: hidden;
+         font-family: Pixeled;
+      }
+    </style>
   </head>
   <body>
+    <div class="fontLoader">-</div>
     <script src="assets/js/bundle.js"></script>
   </body>
 </html>
