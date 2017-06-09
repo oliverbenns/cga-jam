@@ -20,6 +20,8 @@ export default class Bullet extends Phaser.Sprite {
 
     // Collision group
     const bulletGroup = getCollisionGroup(game, COLLISION_GROUPS.BULLET);
+    const enemyGroup = getCollisionGroup(game, COLLISION_GROUPS.ENEMY);
+    const playerGroup = getCollisionGroup(game, COLLISION_GROUPS.PLAYER);
     const targetGroup = getCollisionGroup(game, COLLISION_GROUPS.TARGET);
     const { boundsCollisionGroup } = this.game.physics.p2;
 
@@ -30,6 +32,14 @@ export default class Bullet extends Phaser.Sprite {
 
     this.body.collides(boundsCollisionGroup, () => {
       console.log('Collided with a bounds')
+    });
+
+    this.body.collides(enemyGroup, () => {
+      console.log('Collided with enemy - END LEVEL.')
+    });
+
+    this.body.collides(playerGroup, () => {
+      console.log('Collided with player - END GAME.')
     });
   }
 }

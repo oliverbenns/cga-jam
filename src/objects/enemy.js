@@ -1,4 +1,5 @@
-import { ASSETS } from 'constants';
+import { ASSETS, COLLISION_GROUPS } from 'constants';
+import { getCollisionGroup } from 'utils';
 
 export default class Enemy extends Phaser.Sprite {
   constructor(game, x, y) {
@@ -11,5 +12,12 @@ export default class Enemy extends Phaser.Sprite {
     this.body.setRectangle(20);
     this.body.static = true;
     game.debug.body(this);
+
+    // Collision Group
+    const bulletGroup = getCollisionGroup(game, COLLISION_GROUPS.BULLET);
+    const enemyGroup = getCollisionGroup(game, COLLISION_GROUPS.ENEMY);
+
+    this.body.setCollisionGroup(enemyGroup);
+    this.body.collides(bulletGroup);
   }
 }

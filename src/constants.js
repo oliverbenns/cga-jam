@@ -46,5 +46,7 @@ export const MATERIALS = {
 
 export const COLLISION_GROUPS = {
   BULLET: 'BULLET',
+  ENEMY: 'ENEMY',
+  PLAYER: 'PLAYER',
   TARGET: 'TARGET',
 };

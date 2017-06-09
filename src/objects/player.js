@@ -1,4 +1,6 @@
-import { ASSETS } from 'constants';
+import { ASSETS, COLLISION_GROUPS } from 'constants';
+import { getCollisionGroup } from 'utils';
+
 import Bullet from 'objects/bullet';
 
 export default class Player extends Phaser.Sprite {
@@ -19,6 +21,13 @@ export default class Player extends Phaser.Sprite {
 
     this.bullet = new Bullet(game, x + 20 , y);
     game.add.existing(this.bullet);
+
+     // Collision Group
+    const bulletGroup = getCollisionGroup(game, COLLISION_GROUPS.BULLET);
+    const playerGroup = getCollisionGroup(game, COLLISION_GROUPS.PLAYER);
+
+    this.body.setCollisionGroup(playerGroup);
+    this.body.collides(bulletGroup);
   }
 
   update() {

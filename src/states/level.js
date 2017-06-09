@@ -38,6 +38,8 @@ export default class Level extends Phaser.State {
     this.game.physics.p2.setBoundsToWorld(true, true, true, true, true);
 
     createCollisionGroup(this.game, COLLISION_GROUPS.BULLET);
+    createCollisionGroup(this.game, COLLISION_GROUPS.ENEMY);
+    createCollisionGroup(this.game, COLLISION_GROUPS.PLAYER);
     createCollisionGroup(this.game, COLLISION_GROUPS.TARGET);
   }
 
