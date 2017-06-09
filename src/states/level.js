@@ -34,6 +34,9 @@ export default class Level extends Phaser.State {
       surfaceVelocity: 0,        // Will add surface velocity to this material. If bodyA rests on top if bodyB, and the surface velocity is positive, bodyA will slide to the right.
     });
 
+    // Docs say these params are true by default. But without these it doesn't work.
+    this.game.physics.p2.setBoundsToWorld(true, true, true, true, true);
+
     createCollisionGroup(this.game, COLLISION_GROUPS.BULLET);
     createCollisionGroup(this.game, COLLISION_GROUPS.TARGET);
   }
