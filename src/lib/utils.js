@@ -7,7 +7,7 @@ export const createCollisionGroup = (game, name) => {
   const collisionGroup = game.physics.p2.createCollisionGroup();
   collisionGroup.name = name;
 
-  return name;
+  return collisionGroup;
 };
 
 export const getCollisionGroup = (game, name) => game.physics.p2.collisionGroups.find(group => group.name === name);
