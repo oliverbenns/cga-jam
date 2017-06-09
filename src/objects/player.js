@@ -1,5 +1,5 @@
 import { ASSETS, COLLISION_GROUPS } from 'constants';
-import { getCollisionGroup } from 'utils';
+import { getCollisionGroup } from 'lib/utils';
 
 import Bullet from 'objects/bullet';
 

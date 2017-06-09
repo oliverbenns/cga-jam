@@ -6,9 +6,9 @@ import Border from 'objects/border';
 import Player from 'objects/player';
 import Enemy from 'objects/enemy';
 import Target from 'objects/target';
-import { cell } from 'grid';
-import { createCollisionGroup, getMaterial } from 'utils';
-import { bounce } from 'materials';
+import { cell } from 'lib/grid';
+import { createCollisionGroup, getMaterial } from 'lib/utils';
+import { bounce } from 'config/materials';
 
 import Bullet from 'objects/bullet';
 

@@ -3,7 +3,7 @@ import 'p2';
 import 'phaser';
 
 import { CANVAS, STATES } from 'constants';
-import levelData from 'levels';
+import levelData from 'config/levels';
 
 import Boot from 'states/boot';
 import Level from 'states/level';

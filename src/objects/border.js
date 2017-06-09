@@ -2,7 +2,7 @@ import { ASSETS, CANVAS } from 'constants';
 import Block from 'objects/block';
 import fp from 'lodash/fp';
 
-import { cell } from 'grid';
+import { cell } from 'lib/grid';
 
 // We are drawing multiple blocks here at times (in the canvas corners).
 // This should be refactored to prevent this.
