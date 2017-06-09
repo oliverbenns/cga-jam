@@ -26,21 +26,30 @@ export default class Bullet extends Phaser.Sprite {
     const { boundsCollisionGroup } = this.game.physics.p2;
 
     this.body.setCollisionGroup(bulletGroup);
-    this.body.collides(targetGroup, () => {
-      console.log('Collided with a target woop woop')
-    });
 
-    this.body.collides(boundsCollisionGroup, () => {
-      console.log('Collided with a bounds')
-    });
+    if (targetGroup) {
+      this.body.collides(targetGroup, () => {
+        console.log('Collided with a target woop woop')
+      });
+    }
 
-    this.body.collides(enemyGroup, () => {
-      console.log('Collided with enemy - END LEVEL.')
-    });
+    if (boundsCollisionGroup) {
+      this.body.collides(boundsCollisionGroup, () => {
+        console.log('Collided with a bounds')
+      });
+    }
 
-    this.body.collides(playerGroup, () => {
-      console.log('Collided with player - END GAME.')
-    });
+    if (enemyGroup) {
+      this.body.collides(enemyGroup, () => {
+        console.log('Collided with enemy - END LEVEL.')
+      });
+    }
+
+    if (playerGroup) {
+      this.body.collides(playerGroup, () => {
+        console.log('Collided with player - END GAME.')
+      });
+    }
   }
 }
 
