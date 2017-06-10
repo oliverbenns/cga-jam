@@ -3,7 +3,8 @@ import { getCollisionGroup, getMaterial } from 'lib/utils';
 
 export default class Bullet extends Phaser.Sprite {
   constructor(game, x, y) {
-    const { world } = game;
+    const { state, world } = game;
+    const level = state.states[state.current];
 
     super(game, x, y, ASSETS.BULLET);
 
@@ -34,21 +35,15 @@ export default class Bullet extends Phaser.Sprite {
     }
 
     if (boundsCollisionGroup) {
-      this.body.collides(boundsCollisionGroup, () => {
-        console.log('Collided with a bounds')
-      });
+      this.body.collides(boundsCollisionGroup, level.endGame);
     }
 
     if (enemyGroup) {
-      this.body.collides(enemyGroup, () => {
-        console.log('Collided with enemy - END LEVEL.')
-      });
+      this.body.collides(enemyGroup, level.end);
     }
 
     if (playerGroup) {
-      this.body.collides(playerGroup, () => {
-        console.log('Collided with player - END GAME.')
-      });
+      this.body.collides(playerGroup, level.endGame);
     }
   }
 }

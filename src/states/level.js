@@ -18,6 +18,8 @@ export default class Level extends Phaser.State {
     this.data = data;
 
     this.number = number;
+    this.end = this.end.bind(this);
+    this.endGame = this.endGame.bind(this);
   }
 
   preload() {
@@ -60,22 +62,20 @@ export default class Level extends Phaser.State {
 
     const border = new Border(game, [data.player, data.enemy]);
     game.add.existing(border);
+
+    console.log('this.game', this.game);
   };
 
-  endGame() {
+  end() {
     const { state } = this.game;
     const nextLevelId = `LEVEL_0${this.number + 1}`;
 
-    state.states[nextLevelId] ? state.start(nextLevelId) : state.start(STATES.END);
+    state.states[nextLevelId] ? state.start(nextLevelId) : this.endGame();
   }
 
-  update() {
-    // this.game.physics.arcade.collide(this.player.bullet, this.targets);
-    // const collectPickup = (player, pickup) => {
-    //   pickup.kill()
-    //   this.endGame();
-    // };
+  endGame() {
+    const { state } = this.game;
 
-    // this.game.physics.arcade.overlap(this.player, this.pickups, collectPickup, null, this);
+    state.start(STATES.END)
   }
 }
