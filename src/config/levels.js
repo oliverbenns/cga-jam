@@ -1,8 +1,10 @@
+import { CANVAS } from 'constants';
+
 const levels = [
   {
     targets: [
       [4, 3],
-      [4, 11],
+      [4, 6],
     ],
   },
   {
@@ -20,7 +22,7 @@ export default levels.map(level => ({
     y: 3
   },
   enemy: level.enemy || {
-    x: 23,
-    y: 11
+    x: CANVAS.CELL_COUNT_X - 1,
+    y: 6
   },
 }));
