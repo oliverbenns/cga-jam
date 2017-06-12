@@ -10,7 +10,7 @@ export default class Bullet extends Phaser.Sprite {
 
     this.particleBurst = this.particleBurst.bind(this);
 
-    game.physics.p2.enable(this, true);
+    game.physics.p2.enable(this);
 
     this.body.setRectangle(4, 4);
 
