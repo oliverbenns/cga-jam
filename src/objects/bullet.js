@@ -39,7 +39,7 @@ export default class Bullet extends Phaser.Sprite {
     }
 
     if (boundsCollisionGroup) {
-      this.body.collides(boundsCollisionGroup, level.endGame);
+      this.body.collides(boundsCollisionGroup, () => level.endGame('You Hit A Wall'));
     }
 
     if (enemyGroup) {
@@ -47,7 +47,7 @@ export default class Bullet extends Phaser.Sprite {
     }
 
     if (playerGroup) {
-      this.body.collides(playerGroup, level.endGame);
+      this.body.collides(playerGroup, () => level.endGame('You Shot Yourself'));
     }
   }
 

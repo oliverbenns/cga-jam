@@ -23,7 +23,7 @@ export default class Timer extends Phaser.Text {
     this.setText((this.timer.duration / 1000).toFixed(1));
 
     if (this.complete) {
-      level.endGame();
+      level.endGame('You Ran Out Of Time');
     }
   }
 }

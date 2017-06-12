@@ -81,12 +81,15 @@ export default class Level extends Phaser.State {
     const { state } = this.game;
     const nextLevelId = `LEVEL_0${this.number + 1}`;
 
-    state.states[nextLevelId] ? state.start(nextLevelId) : this.endGame();
+    state.states[nextLevelId] ? state.start(nextLevelId) : this.endGame('Congratulations, You Completed The Game', true);
   }
 
-  endGame() {
+  endGame(message, success = false) {
     const { state } = this.game;
 
+    state.states[STATES.END].message = message;
+    state.states[STATES.END].success = success;
+    state.states[STATES.END].levelNumber = this.number;
     state.start(STATES.END)
   }
 }

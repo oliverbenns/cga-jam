@@ -1,13 +1,16 @@
 import { ASSETS, STATES } from 'constants';
+import levels from 'config/levels';
 
 import Button from 'objects/button';
 import Heading from 'objects/heading';
+import Subheading from 'objects/subheading';
 
 export default class End extends Phaser.State {
   create() {
     const { game } = this;
     const objects = [
-      new Heading(game, 'Game Over'),
+      new Heading(game, this.success ? 'You Win' : 'Game Over'),
+      new Subheading(game, `${this.message} And Reached Level ${this.levelNumber} / ${levels.length}`),
       new Button(game, this.handleClick, 'Retry'),
     ];
 
