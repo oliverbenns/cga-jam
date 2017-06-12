@@ -10,7 +10,7 @@ export default class Bullet extends Phaser.Sprite {
 
     game.physics.p2.enable(this, true);
 
-    this.body.setCircle(6);
+    this.body.setRectangle(4, 4);
 
     this.body.fixedRotation = true;
     game.debug.body(this);
