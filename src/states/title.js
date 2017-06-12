@@ -30,7 +30,7 @@ export default class Title extends Phaser.State {
     const bullets = fp.times(this.createBullet)(15);
 
     const objects = [
-      new Heading(game, 'CGA RICHOCHET'),
+      new Heading(game, 'CGA Richochet'),
       new Button(game, this.handleClick, 'Start game'),
       ...bullets,
     ];
