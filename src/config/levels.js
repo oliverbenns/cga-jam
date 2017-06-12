@@ -2,12 +2,14 @@ import { CANVAS } from 'constants';
 
 const levels = [
   {
+    timeLimit: 10,
     targets: [
       [7, 3],
       [7, 6],
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [2, 3],
       [2, 6],
@@ -18,6 +20,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [3, 3],
       [3, 6],
@@ -40,6 +43,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [7, 3],
       [7, 6],
@@ -53,6 +57,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [2, 3],
       [2, 7],
@@ -74,6 +79,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [12, 3],
       [12, 1],
@@ -84,6 +90,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [4, 3],
       [4, 6],
@@ -99,6 +106,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [10, 3],
       [10, 7],
@@ -117,6 +125,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [2, 3],
       [2, 8],
@@ -134,6 +143,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [2, 3],
       [2, 7],
@@ -161,6 +171,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [2, 1],
       [2, 3],
@@ -177,6 +188,7 @@ const levels = [
     ],
   },
   {
+    timeLimit: 10,
     targets: [
       [2, 3],
       [2, 8],
