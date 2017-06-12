@@ -7,8 +7,8 @@ export default class Block extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.BLOCK);
 
-    game.physics.p2.enable(this, true);
-    this.body.setRectangleFromSprite(this);
+    game.physics.p2.enable(this);
+    this.body.setRectangle(60, 60);
     this.body.static = true;
 
     game.debug.body(this);
