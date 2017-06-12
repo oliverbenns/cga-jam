@@ -8,6 +8,8 @@ export default class Bullet extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.BULLET);
 
+    this.particleBurst = this.particleBurst.bind(this);
+
     game.physics.p2.enable(this, true);
 
     this.body.setRectangle(4, 4);
@@ -28,10 +30,12 @@ export default class Bullet extends Phaser.Sprite {
 
     this.body.setCollisionGroup(bulletGroup);
 
+    this.emitter = game.add.emitter(0, 0, 100);
+    this.emitter.makeParticles(ASSETS.PARTICLE);
+    this.emitter.gravity = 0;
+
     if (targetGroup) {
-      this.body.collides(targetGroup, () => {
-        console.log('Collided with a target woop woop')
-      });
+      this.body.collides(targetGroup, this.particleBurst);
     }
 
     if (boundsCollisionGroup) {
@@ -45,6 +49,13 @@ export default class Bullet extends Phaser.Sprite {
     if (playerGroup) {
       this.body.collides(playerGroup, level.endGame);
     }
+  }
+
+  particleBurst() {
+    this.emitter.x = this.x;
+    this.emitter.y = this.y;
+
+    this.emitter.start(true, 600, null, 8);
   }
 }
 

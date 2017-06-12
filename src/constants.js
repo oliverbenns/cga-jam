@@ -21,6 +21,7 @@ export const ASSETS = {
   TARGET: 'TARGET',
   BUTTON: 'BUTTON',
   BLOCK: 'BLOCK',
+  PARTICLE: 'PARTICLE',
 };
 
 export const STATES = {
