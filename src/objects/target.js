@@ -1,5 +1,8 @@
 import { ASSETS, COLLISION_GROUPS, MATERIALS, PHYSICS } from 'constants';
 import { getCollisionGroup, getMaterial } from 'lib/utils';
+import fp from 'lodash/fp';
+
+const possibleAngles = [45, 135, 225, 315];
 
 export default class Target extends Phaser.Sprite {
   constructor(game, x, y) {
@@ -8,6 +11,9 @@ export default class Target extends Phaser.Sprite {
     super(game, x, y, ASSETS.TARGET);
 
     game.physics.p2.enable(this, true);
+
+    // Set random angle
+    this.body.angle = fp.sample(possibleAngles);
 
     this.body.clearShapes();
     this.body.loadPolygon(PHYSICS, 'target');
@@ -31,12 +37,8 @@ export default class Target extends Phaser.Sprite {
   }
 
   listener (sprite, pointer) {
-    if (pointer.button === Phaser.Mouse.RIGHT_BUTTON) {
-      this.body.angle -= 45;
-      return;
+    if (pointer.button === Phaser.Mouse.LEFT_BUTTON) {
+      this.body.angle += 90;
     }
-
-    this.body.angle += 45;
   }
 }
-
