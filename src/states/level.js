@@ -7,6 +7,7 @@ import Border from 'objects/border';
 import Player from 'objects/player';
 import Enemy from 'objects/enemy';
 import Target from 'objects/target';
+import Timer from 'objects/timer';
 import { cell } from 'lib/grid';
 import { createCollisionGroup, getMaterial } from 'lib/utils';
 import { bounce } from 'config/materials';
@@ -71,7 +72,9 @@ export default class Level extends Phaser.State {
     const border = new Border(game, [data.player, data.enemy]);
     game.add.existing(border);
 
-    console.log('this.game', this.game);
+    this.timer = new Timer(game, cell(14), cell(1), data.timeLimit);
+    game.add.existing(this.timer);
+
   };
 
   end() {
