@@ -8,7 +8,7 @@ export default class Boot extends Phaser.State {
     load.image(ASSETS.PARTICLE, 'assets/img/particle.png');
     load.spritesheet(ASSETS.BULLET, 'assets/img/bullet.png', 4, 4);
     load.spritesheet(ASSETS.BLOCK, 'assets/img/block.png', 60, 60);
-    load.spritesheet(ASSETS.BUTTON, 'assets/img/button.png', 190, 49);
+    load.spritesheet(ASSETS.BUTTON, 'assets/img/button.png', 180, 60);
     load.spritesheet(ASSETS.ENEMY, 'assets/img/enemy.png', 20, 32);
     load.spritesheet(ASSETS.PLAYER, 'assets/img/player.png', 60, 60);
     load.spritesheet(ASSETS.TARGET, 'assets/img/target.png', 60, 60);

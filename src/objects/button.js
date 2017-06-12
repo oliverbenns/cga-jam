@@ -9,15 +9,9 @@ export default class Button extends Phaser.Button {
     this.anchor.setTo(0.5, 0.5);
 
     if (label) {
-      this.label = new Phaser.Text(game, 0, 0, label.toUpperCase(), { font: '16px Pixeled', fill: PALETTE.PRIMARY.BLACK });
+      this.label = new Phaser.Text(game, 0, 0, label.toUpperCase(), { font: '10px Pixeled', fill: PALETTE.PRIMARY.LIGHT_MAGENTA });
       this.label.anchor.setTo(0.5, 0.5);
       this.addChild(this.label);
     }
-  }
-
-  update() {
-    const active = this.frame === 0; // Is there a better way?
-
-    this.label.position.y = active ? 3 : 0;
   }
 }
