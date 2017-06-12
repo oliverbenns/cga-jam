@@ -2,6 +2,7 @@ import { COLLISION_GROUPS, MATERIALS, STATES } from 'constants';
 import fp from 'lodash/fp';
 
 import Background from 'objects/background';
+import Block from 'objects/block';
 import Border from 'objects/border';
 import Player from 'objects/player';
 import Enemy from 'objects/enemy';
@@ -52,11 +53,18 @@ export default class Level extends Phaser.State {
 
     // Create groups - what are these for?
     this.targets = game.add.group();
+    this.blocks = game.add.group();
 
     data.targets
       .map(positions => {
         const cellPositions = positions.map(cell);
         return new Target(game, ...cellPositions)
+      })
+      .forEach(target => this.targets.add(target));
+    data.blocks
+      .map(positions => {
+        const cellPositions = positions.map(cell);
+        return new Block(game, ...cellPositions)
       })
       .forEach(target => this.targets.add(target));
 
