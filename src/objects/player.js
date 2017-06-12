@@ -9,9 +9,9 @@ export default class Player extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.PLAYER, 1);
 
-    game.physics.p2.enable(this, true);
+    game.physics.p2.enable(this);
 
-    this.body.setRectangle(20);
+    this.body.setRectangle(44, 60);
     this.body.static = true;
     game.debug.body(this);
 
@@ -19,7 +19,7 @@ export default class Player extends Phaser.Sprite {
 
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    this.bullet = new Bullet(game, x + 20 , y);
+    this.bullet = new Bullet(game, x + 28 , y);
     game.add.existing(this.bullet);
 
      // Collision Group
