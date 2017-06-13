@@ -1,4 +1,4 @@
-import { ASSETS, COLLISION_GROUPS, MATERIALS, PHYSICS } from 'constants';
+import { ASSETS, COLLISION_GROUPS, MATERIALS } from 'constants';
 import { getCollisionGroup, getMaterial } from 'lib/utils';
 
 export default class Bullet extends Phaser.Sprite {

@@ -45,8 +45,6 @@ export const CANVAS = {
   CELL_COUNT_Y: 10,
 };
 
-export const PHYSICS = 'PHYSICS';
-
 export const MATERIALS = {
   BULLET: 'BULLET',
   TARGET: 'TARGET',

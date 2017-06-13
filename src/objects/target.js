@@ -1,4 +1,4 @@
-import { ASSETS, COLLISION_GROUPS, MATERIALS, PHYSICS } from 'constants';
+import { ASSETS, COLLISION_GROUPS, MATERIALS } from 'constants';
 import { getCollisionGroup, getMaterial } from 'lib/utils';
 import fp from 'lodash/fp';
 
@@ -10,13 +10,14 @@ export default class Target extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.TARGET);
 
-    game.physics.p2.enable(this, true);
+    game.physics.p2.enable(this);
 
     // Set random angle
     this.body.angle = fp.sample(possibleAngles);
 
     this.body.clearShapes();
-    this.body.loadPolygon(PHYSICS, 'target');
+
+    this.body.setRectangle(60, 8);
 
     this.body.static = true;
     game.debug.body(this);
