@@ -39,8 +39,7 @@ export default class Player extends Phaser.Sprite {
 
   fireBullet() {
     this.game.sound.play(ASSETS.SFX_FIRE);
-    this.bullet.body.velocity.x = 500;
-    // this.bullet.body.velocity.y = 200;
+    this.bullet.body.velocity.x = 600;
   }
 }
 
