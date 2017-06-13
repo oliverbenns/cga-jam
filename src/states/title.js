@@ -36,9 +36,6 @@ export default class Title extends Phaser.State {
     ];
 
     objects.forEach(game.add.existing, this);
-
-    // tmp start level 1 for dev.
-    // this.game.state.start('LEVEL_01');
   }
 
   handleClick() {
