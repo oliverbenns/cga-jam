@@ -3,6 +3,7 @@ import levels from 'config/levels';
 
 import Button from 'objects/button';
 import Heading from 'objects/heading';
+import Instructions from 'objects/instructions';
 import Subheading from 'objects/subheading';
 
 export default class End extends Phaser.State {
@@ -12,6 +13,7 @@ export default class End extends Phaser.State {
       new Heading(game, this.success ? 'You Win' : 'Game Over'),
       new Subheading(game, this.success ? this.message : `${this.message} And Reached Level ${this.levelNumber} / ${levels.length}`),
       new Button(game, () => this.handleClick(), 'Retry'),
+      new Instructions(game),
     ];
 
     objects.forEach(game.add.existing, this);
@@ -21,3 +23,4 @@ export default class End extends Phaser.State {
     this.game.state.start('LEVEL_01');
   }
 }
+

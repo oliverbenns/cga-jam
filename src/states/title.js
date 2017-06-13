@@ -1,9 +1,10 @@
-import { ASSETS, CANVAS, COLLISION_GROUPS, MATERIALS, STATES } from 'constants';
+import { ASSETS, CANVAS, COLLISION_GROUPS, MATERIALS, PALETTE, STATES } from 'constants';
 import { getMaterial, createCollisionGroup } from 'lib/utils';
 import { bounce } from 'config/materials';
 import fp from 'lodash/fp';
 
 import Button from 'objects/button';
+import Instructions from 'objects/instructions';
 import Bullet from 'objects/bullet';
 import Heading from 'objects/heading';
 
@@ -32,12 +33,14 @@ export default class Title extends Phaser.State {
     const objects = [
       new Heading(game, 'CGA Richochet'),
       new Button(game, () => this.handleClick(), 'Start game'),
+      new Instructions(game),
       ...bullets,
     ];
 
     objects.forEach(game.add.existing, this);
 
     this.game.sound.play(ASSETS.SFX_INTRO);
+
   }
 
   handleClick() {
