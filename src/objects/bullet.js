@@ -35,19 +35,31 @@ export default class Bullet extends Phaser.Sprite {
     this.emitter.gravity = 0;
 
     if (targetGroup) {
-      this.body.collides(targetGroup, this.particleBurst);
+      this.body.collides(targetGroup, () => {
+        this.particleBurst();
+        this.game.sound.play(ASSETS.SFX_RICHOCHET);
+      });
     }
 
     if (boundsCollisionGroup) {
-      this.body.collides(boundsCollisionGroup, () => level.endGame('You hit a wall'));
+      this.body.collides(boundsCollisionGroup, () => {
+        level.endGame('You hit a wall');
+        this.game.sound.play(ASSETS.SFX_EXPLODE);
+      });
     }
 
     if (enemyGroup) {
-      this.body.collides(enemyGroup, level.end);
+      this.body.collides(enemyGroup, () => {
+        level.end();
+        this.game.sound.play(ASSETS.SFX_SUCCESS);
+    });
     }
 
     if (playerGroup) {
-      this.body.collides(playerGroup, () => level.endGame('You shot yourself'));
+      this.body.collides(playerGroup, () => {
+        level.endGame('You shot yourself');
+        this.game.sound.play(ASSETS.SFX_EXPLODE);
+      });
     }
   }
 
