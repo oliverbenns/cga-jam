@@ -11,7 +11,7 @@ export default class End extends Phaser.State {
     const objects = [
       new Heading(game, this.success ? 'You Win' : 'Game Over'),
       new Subheading(game, this.success ? this.message : `${this.message} And Reached Level ${this.levelNumber} / ${levels.length}`),
-      new Button(game, this.handleClick, 'Retry'),
+      new Button(game, () => this.handleClick(), 'Retry'),
     ];
 
     objects.forEach(game.add.existing, this);
