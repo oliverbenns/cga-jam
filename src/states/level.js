@@ -75,6 +75,7 @@ export default class Level extends Phaser.State {
     this.timer = new Timer(game, cell(14), cell(1), data.timeLimit);
     game.add.existing(this.timer);
 
+    this.passKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
   };
 
   end() {
@@ -91,5 +92,12 @@ export default class Level extends Phaser.State {
     state.states[STATES.END].success = success;
     state.states[STATES.END].levelNumber = this.number;
     state.start(STATES.END)
+  }
+
+  // Ability to skip level by pressing Q.
+  update() {
+    if (this.passKey.isDown) {
+      this.end();
+    }
   }
 }
