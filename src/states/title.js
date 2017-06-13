@@ -36,6 +36,8 @@ export default class Title extends Phaser.State {
     ];
 
     objects.forEach(game.add.existing, this);
+
+    this.game.sound.play(ASSETS.SFX_INTRO);
   }
 
   handleClick() {
