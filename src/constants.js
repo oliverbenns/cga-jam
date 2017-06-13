@@ -28,6 +28,7 @@ export const ASSETS = {
   SFX_RICHOCHET: 'SFX_RICHOCHET',
   SFX_SUCCESS: 'SFX_SUCCESS',
   SFX_EXPLODE: 'SFX_EXPLODE',
+  SFX_INTRO: 'SFX_INTRO',
 };
 
 export const STATES = {

@@ -21,6 +21,7 @@ export default class Boot extends Phaser.State {
     load.audio(ASSETS.SFX_RICHOCHET, 'assets/audio/ricochet.mp3');
     load.audio(ASSETS.SFX_SUCCESS, 'assets/audio/success.mp3');
     load.audio(ASSETS.SFX_EXPLODE, 'assets/audio/explode.mp3');
+    load.audio(ASSETS.SFX_INTRO, 'assets/audio/intro.mp3');
 
     this.game.load.physics(PHYSICS, 'assets/physics.json');
     this.game.physics.p2.setImpactEvents(true);
