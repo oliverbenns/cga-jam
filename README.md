@@ -1,4 +1,4 @@
-# CGA Jam
+# CGA Ricochet
 
 Game for the [CGA Game Jam](https://itch.io/jam/cga-jam).
 
