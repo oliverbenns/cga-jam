@@ -68,7 +68,7 @@ export default class Level extends Phaser.State {
         const cellPositions = positions.map(cell);
         return new Block(game, ...cellPositions)
       })
-      .forEach(target => this.targets.add(target));
+      .forEach(target => this.blocks.add(target));
 
     const border = new Border(game, [data.player, data.enemy]);
     game.add.existing(border);
