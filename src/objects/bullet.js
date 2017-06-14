@@ -61,6 +61,10 @@ export default class Bullet extends Phaser.Sprite {
         this.game.sound.play(ASSETS.SFX_EXPLODE);
       });
     }
+
+
+    this.body.damping = 0;
+    this.body.mass = 0.1;
   }
 
   particleBurst() {

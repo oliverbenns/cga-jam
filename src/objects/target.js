@@ -13,11 +13,9 @@ export default class Target extends Phaser.Sprite {
     // Set random angle
     this.body.angle = fp.sample([45, 135]);
     this.body.clearShapes();
-
     this.body.setRectangle(60, 8);
-
     this.body.static = true;
-    game.debug.body(this);
+    this.body.mass = 1;
 
     // Input
     this.inputEnabled = true;
