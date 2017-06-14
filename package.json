@@ -1,6 +1,6 @@
 {
-  "name": "cga-ricochet",
-  "version": "0.0.1",
+  "name": "cga-jam",
+  "version": "1.0.0",
   "description": "Game for the CGA Game Jam",
   "main": "index.js",
   "repository": {
