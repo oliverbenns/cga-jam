@@ -37,7 +37,7 @@ export default class Bullet extends Phaser.Sprite {
     if (targetGroup) {
       this.body.collides(targetGroup, () => {
         this.particleBurst();
-        this.game.sound.play(ASSETS.SFX_RICHOCHET);
+        this.game.sound.play(ASSETS.SFX_RICOCHET);
       });
     }
 

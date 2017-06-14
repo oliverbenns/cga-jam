@@ -18,7 +18,7 @@ export default class Boot extends Phaser.State {
     load.audio(ASSETS.SFX_COUNTDOWN, 'assets/audio/countdown.mp3');
     load.audio(ASSETS.SFX_CLICK, 'assets/audio/click.mp3');
     load.audio(ASSETS.SFX_FIRE, 'assets/audio/fire.mp3');
-    load.audio(ASSETS.SFX_RICHOCHET, 'assets/audio/ricochet.mp3');
+    load.audio(ASSETS.SFX_RICOCHET, 'assets/audio/ricochet.mp3');
     load.audio(ASSETS.SFX_SUCCESS, 'assets/audio/success.mp3');
     load.audio(ASSETS.SFX_EXPLODE, 'assets/audio/explode.mp3');
     load.audio(ASSETS.SFX_INTRO, 'assets/audio/intro.mp3');
