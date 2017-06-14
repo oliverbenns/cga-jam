@@ -3,7 +3,7 @@ import fp from 'lodash/fp';
 
 export default class Timer extends Phaser.Text {
   constructor(game, x, y, seconds) {
-    super(game, x, y, seconds, { font: '15px Pixeled', fill: PALETTE.PRIMARY.WHITE })
+    super(game, x, y, seconds, { font: '15px Pixeled', fill: PALETTE.WHITE })
     this.total = seconds;
     this.anchor.setTo(0.5, 0.5);
     this.complete = false;

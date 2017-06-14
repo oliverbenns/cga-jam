@@ -11,7 +11,7 @@ export default class Instructions extends Phaser.Text {
       align: 'center',
       wordWrapWidth: CANVAS.WIDTH / 2,
       font: '8px Pixeled',
-      fill: PALETTE.PRIMARY.WHITE,
+      fill: PALETTE.WHITE,
     };
 
     super(game, world.centerX, world.centerY * 1.5625, text.toUpperCase(), style)
