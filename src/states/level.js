@@ -22,6 +22,7 @@ export default class Level extends Phaser.State {
     this.number = number;
     this.end = this.end.bind(this);
     this.endGame = this.endGame.bind(this);
+    this.lock = this.lock.bind(this);
   }
 
   preload() {
@@ -99,5 +100,10 @@ export default class Level extends Phaser.State {
     if (this.passKey.isDown) {
       this.end();
     }
+  }
+
+  lock() {
+    this.targets.children.forEach(target => target.lock());
+    this.timer.counter.pause();
   }
 }

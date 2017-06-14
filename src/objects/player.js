@@ -38,8 +38,12 @@ export default class Player extends Phaser.Sprite {
   }
 
   fireBullet() {
-    this.game.sound.play(ASSETS.SFX_FIRE);
+    const { sound, state, world } = this.game;
+    const level = state.states[state.current];
+
+    sound.play(ASSETS.SFX_FIRE);
     this.bullet.body.velocity.x = 600;
+    level.lock();
   }
 }
 

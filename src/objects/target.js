@@ -2,8 +2,6 @@ import { ASSETS, COLLISION_GROUPS, MATERIALS } from 'constants';
 import { getCollisionGroup, getMaterial } from 'lib/utils';
 import fp from 'lodash/fp';
 
-const possibleAngles = [45, 135, 225, 315];
-
 export default class Target extends Phaser.Sprite {
   constructor(game, x, y) {
     const { world } = game;
@@ -13,8 +11,7 @@ export default class Target extends Phaser.Sprite {
     game.physics.p2.enable(this);
 
     // Set random angle
-    this.body.angle = fp.sample(possibleAngles);
-
+    this.body.angle = fp.sample([45, 135]);
     this.body.clearShapes();
 
     this.body.setRectangle(60, 8);
@@ -22,6 +19,7 @@ export default class Target extends Phaser.Sprite {
     this.body.static = true;
     game.debug.body(this);
 
+    // Input
     this.inputEnabled = true;
     this.events.onInputDown.add(this.listener, this);
 
@@ -35,11 +33,20 @@ export default class Target extends Phaser.Sprite {
 
     this.body.setCollisionGroup(targetGroup);
     this.body.collides(bulletGroup);
+
+    // Locking
+    this.locked = false;
+    this.lock = this.lock.bind(this);
   }
 
   listener (sprite, pointer) {
-    if (pointer.button === Phaser.Mouse.LEFT_BUTTON) {
+    if (pointer.button === Phaser.Mouse.LEFT_BUTTON && !this.locked) {
       this.body.angle += 90;
     }
+  }
+
+  lock() {
+    this.locked = true;
+    this.frame = 1;
   }
 }
