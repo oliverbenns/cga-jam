@@ -10,8 +10,6 @@ export default class Timer extends Phaser.Text {
 
     this.counter = this.game.time.create(false);
 
-    // this.tick = game.time.now;
-
     const ms = this.total * 1000;
     this.counter.add(ms, () => this.complete = true);
     fp.times((index) => {
