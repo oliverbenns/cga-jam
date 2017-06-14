@@ -7,11 +7,11 @@ export default class Enemy extends Phaser.Sprite {
 
     super(game, x, y, ASSETS.ENEMY, 1);
 
-    game.physics.p2.enable(this, true);
+    game.physics.p2.enable(this);
 
-    this.body.setRectangle(20);
+    this.body.setRectangle(44, 60);
+
     this.body.static = true;
-    game.debug.body(this);
 
     // Collision Group
     const bulletGroup = getCollisionGroup(game, COLLISION_GROUPS.BULLET);

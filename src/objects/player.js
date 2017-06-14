@@ -13,7 +13,6 @@ export default class Player extends Phaser.Sprite {
 
     this.body.setRectangle(44, 60);
     this.body.static = true;
-    game.debug.body(this);
 
     this.fired = false;
 
