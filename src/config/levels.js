@@ -20,7 +20,7 @@ const levels = [
     ],
   },
   {
-    timeLimit: 12,
+    timeLimit: 10,
     targets: [
       [4, 3],
       [4, 6],
@@ -167,7 +167,7 @@ const levels = [
     ],
   },
   {
-    timeLimit: 12,
+    timeLimit: 10,
     targets: [
       [2, 1],
       [2, 3],
